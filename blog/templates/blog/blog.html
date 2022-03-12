@@ -32,40 +32,27 @@
             <div class="navbar-nav ml-auto">
               <a class="nav-link" aria-current="page" href="#">About me</a>
               <a class="nav-link" href="#">Telegram</a>
-              <a class="nav-link" href="#">Blog</a>
+              <a class="nav-link active" href="#">Blog</a>
             </div>
           </div>
         </div>
       </nav>
     </header>
 
-    <main role="main">
+    <main role="main" class = "pl-3">
 
-      <section class="jumbotron text-center">
-        <div class="container">
-          <p class="lead text-muted">Hello everyone! This is my zettelkasten blog app! You can message me right now!</p>
-          <p>
-            <a href="mailto:kayrasktl@gmail.com" class="btn btn-primary my-2">Mail me</a>
-          </p>
-        </div>
-      </section>
+      <h1 class = "pt-4 pb-5">Recent Posts</h1>
 
-      <div class="album py-5 bg-light">
-        <div class="container">
-          {% for event in events.all%}
-          <div class="row">
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src = "{{event.event_image.url}}" />
-                <div class="card-body">
-                  <p class="card-text">{{ event.event_text }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
+      {% for post in posts.all%}
+        <h2>{{post.post_title}}</h2>
+        <br/>
+        <img src = "{{ post.post_image.url }}" height = 300 width = 300 class = "img-fluid"/>
+        <br/>
+        <p>{{ post.post_text }}</p>
+        {{post.post_date}}
+        <br/>
+        <br/>
+      {% endfor %}
 
     </main>
 
